@@ -1,0 +1,109 @@
+{
+  "name": "MenuSafe - Dine with Confidence",
+  "short_name": "MenuSafe",
+  "description": "AI-powered menu scanner for food allergies and dietary restrictions. Scan any restaurant menu and instantly discover safe dishes for gluten-free, dairy-free, vegan, and 25+ other diets.",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#faf8f5",
+  "theme_color": "#1a4d2e",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["food", "health", "lifestyle"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/scan.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Scan menus instantly"
+    },
+    {
+      "src": "/screenshots/results.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Get dietary analysis"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Scan Menu",
+      "short_name": "Scan",
+      "description": "Take a photo of a menu to analyze",
+      "url": "/dashboard/scan",
+      "icons": [{ "src": "/icons/scan-shortcut.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "My Restaurants",
+      "short_name": "Restaurants",
+      "description": "View saved restaurants",
+      "url": "/dashboard/restaurants",
+      "icons": [{ "src": "/icons/restaurant-shortcut.png", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=app.menusafe.android",
+      "id": "app.menusafe.android"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/app/menusafe/id000000000"
+    }
+  ],
+  "prefer_related_applications": true,
+  "iarc_rating_id": "",
+  "handle_links": "preferred"
+}
