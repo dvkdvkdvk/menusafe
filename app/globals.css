@@ -1,0 +1,294 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Graza.co inspired - Bold, playful, high contrast */
+  --background: oklch(0.98 0.01 95);
+  --foreground: oklch(0.12 0.02 90);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0.02 90);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0.02 90);
+  
+  /* Primary: Bold olive green like Graza */
+  --primary: oklch(0.45 0.15 140);
+  --primary-foreground: oklch(0.98 0.01 95);
+  
+  /* Secondary: Warm cream */
+  --secondary: oklch(0.96 0.02 90);
+  --secondary-foreground: oklch(0.20 0.02 90);
+  
+  --muted: oklch(0.95 0.015 90);
+  --muted-foreground: oklch(0.40 0.02 90); /* Darker for better contrast */
+  
+  /* Accent: Neon lime highlight - #c8f547 equivalent */
+  --accent: oklch(0.90 0.22 120);
+  --accent-foreground: oklch(0.15 0.02 90); /* Dark for high contrast on lime */
+  
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  
+  --border: oklch(0.88 0.02 90);
+  --input: oklch(0.92 0.01 90);
+  --ring: oklch(0.45 0.15 140);
+  
+  /* Safety colors - Bold Graza style */
+  --safe: oklch(0.45 0.15 140);
+  --safe-foreground: oklch(0.98 0.01 140);
+  --caution: oklch(0.75 0.16 80);
+  --caution-foreground: oklch(0.18 0.03 80);
+  --unsafe: oklch(0.55 0.22 25);
+  --unsafe-foreground: oklch(0.98 0.01 25);
+  
+  --radius: 1rem;
+  
+  --chart-1: oklch(0.45 0.15 140);
+  --chart-2: oklch(0.75 0.16 80);
+  --chart-3: oklch(0.55 0.22 25);
+  --chart-4: oklch(0.55 0.12 220);
+  --chart-5: oklch(0.60 0.10 300);
+  
+  /* Sidebar */
+  --sidebar: oklch(0.12 0.02 90);
+  --sidebar-foreground: oklch(0.96 0.01 90);
+  --sidebar-primary: oklch(0.85 0.20 130);
+  --sidebar-primary-foreground: oklch(0.12 0.02 90);
+  --sidebar-accent: oklch(0.22 0.02 90);
+  --sidebar-accent-foreground: oklch(0.96 0.01 90);
+  --sidebar-border: oklch(0.25 0.02 90);
+  --sidebar-ring: oklch(0.85 0.20 130);
+}
+
+.dark {
+  --background: oklch(0.10 0.01 90);
+  --foreground: oklch(0.96 0.01 90);
+  --card: oklch(0.14 0.01 90);
+  --card-foreground: oklch(0.96 0.01 90);
+  --popover: oklch(0.14 0.01 90);
+  --popover-foreground: oklch(0.96 0.01 90);
+  
+  --primary: oklch(0.65 0.18 140);
+  --primary-foreground: oklch(0.10 0.01 90);
+  
+  --secondary: oklch(0.20 0.015 90);
+  --secondary-foreground: oklch(0.90 0.01 90);
+  
+  --muted: oklch(0.20 0.01 90);
+  --muted-foreground: oklch(0.60 0.01 90);
+  
+  --accent: oklch(0.75 0.20 130);
+  --accent-foreground: oklch(0.10 0.01 90);
+  
+  --destructive: oklch(0.50 0.18 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  
+  --border: oklch(0.24 0.01 90);
+  --input: oklch(0.24 0.01 90);
+  --ring: oklch(0.65 0.18 140);
+  
+  --safe: oklch(0.60 0.16 140);
+  --safe-foreground: oklch(0.10 0.01 140);
+  --caution: oklch(0.70 0.14 80);
+  --caution-foreground: oklch(0.12 0.03 80);
+  --unsafe: oklch(0.55 0.18 25);
+  --unsafe-foreground: oklch(0.10 0.01 25);
+  
+  --sidebar: oklch(0.08 0.01 90);
+  --sidebar-foreground: oklch(0.96 0.01 90);
+  --sidebar-primary: oklch(0.75 0.20 130);
+  --sidebar-primary-foreground: oklch(0.08 0.01 90);
+  --sidebar-accent: oklch(0.18 0.02 90);
+  --sidebar-accent-foreground: oklch(0.96 0.01 90);
+  --sidebar-border: oklch(0.22 0.01 90);
+  --sidebar-ring: oklch(0.75 0.20 130);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-full: 9999px;
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-safe: var(--safe);
+  --color-safe-foreground: var(--safe-foreground);
+  --color-caution: var(--caution);
+  --color-caution-foreground: var(--caution-foreground);
+  --color-unsafe: var(--unsafe);
+  --color-unsafe-foreground: var(--unsafe-foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  ::selection {
+    background-color: oklch(0.85 0.20 130 / 0.3);
+  }
+}
+
+@layer components {
+  /* Graza bold sections */
+  .section-dark {
+    @apply bg-foreground text-background;
+  }
+  
+  .section-accent {
+    @apply bg-accent text-accent-foreground;
+  }
+  
+  .section-cream {
+    @apply bg-secondary text-secondary-foreground;
+  }
+  
+  /* Graza pill button */
+  .btn-pill {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-3 font-bold uppercase tracking-wide;
+    @apply transition-all duration-200 ease-out;
+    @apply hover:scale-[1.02] active:scale-[0.98];
+  }
+  
+  .btn-pill-dark {
+    @apply bg-foreground text-background hover:bg-foreground/90;
+  }
+  
+  .btn-pill-light {
+    @apply bg-background text-foreground border-2 border-foreground hover:bg-muted;
+  }
+  
+  .btn-pill-neon {
+    @apply bg-accent text-accent-foreground hover:brightness-105;
+  }
+  
+  /* Graza card */
+  .card-graza {
+    @apply bg-card rounded-3xl border-2 border-border p-6;
+    @apply shadow-sm hover:shadow-md transition-shadow;
+  }
+  
+  /* Safety badges - Graza bold style */
+  .badge-safe {
+    @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold;
+    @apply bg-safe text-safe-foreground;
+  }
+  
+  .badge-caution {
+    @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold;
+    @apply bg-caution text-caution-foreground;
+  }
+  
+  .badge-unsafe {
+    @apply inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-bold;
+    @apply bg-unsafe text-unsafe-foreground;
+  }
+  
+  /* Graza input */
+  .input-graza {
+    @apply w-full rounded-2xl border-2 border-border bg-background px-4 py-3;
+    @apply text-foreground placeholder:text-muted-foreground;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent;
+    @apply transition-all duration-200;
+  }
+  
+  /* Neon highlight text */
+  .text-neon {
+    @apply text-accent;
+  }
+  
+  /* Bold heading */
+  .heading-bold {
+    @apply font-bold tracking-tight;
+  }
+  
+  .heading-serif {
+    @apply font-serif tracking-tight;
+  }
+  
+  /* Restriction chip - selected */
+  .chip-selected {
+    @apply bg-primary text-primary-foreground border-2 border-primary;
+  }
+  
+  /* Restriction chip - unselected */
+  .chip-unselected {
+    @apply bg-background text-foreground border-2 border-border hover:border-primary/50;
+  }
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.45 0.01 90 / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.45 0.01 90 / 0.5);
+}
+
+/* iOS safe areas */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+/* Touch-friendly tap targets */
+@media (pointer: coarse) {
+  button, a, [role="button"] {
+    min-height: 44px;
+  }
+}
+
+.no-overscroll {
+  overscroll-behavior: none;
+}

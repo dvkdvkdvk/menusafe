@@ -1,0 +1,109 @@
+{
+  "app": {
+    "name": "MenuSafe - Allergy Menu Scanner",
+    "subtitle": "Eat with Confidence",
+    "bundle_id_ios": "app.menusafe.ios",
+    "bundle_id_android": "app.menusafe.android",
+    "version": "1.0.0",
+    "build_number": 1
+  },
+  "apple_app_store": {
+    "primary_category": "Food & Drink",
+    "secondary_category": "Health & Fitness",
+    "age_rating": "4+",
+    "price": "Free with in-app subscription",
+    "in_app_purchases": true,
+    "subscription_price": "€2.90/month (Pro)",
+    "description": "MenuSafe uses AI to instantly analyze restaurant menus and identify dishes safe for your dietary needs.\n\nSIMPLY SCAN ANY MENU\nTake a photo of any restaurant menu - printed, digital, or handwritten. Our advanced AI reads and analyzes every dish in seconds.\n\nPERSONALIZED FOR YOUR DIET\nSet up your dietary profile once with 25+ restrictions including:\n• Food allergies (nuts, shellfish, eggs, soy)\n• Intolerances (gluten, lactose, FODMAP)\n• Lifestyle diets (vegan, vegetarian, keto, halal, kosher)\n\nINSTANT SAFETY RATINGS\nEach dish gets a clear rating:\n• Safe - Enjoy without worry\n• Caution - May contain traces\n• Avoid - Contains your restrictions\n\nBUILD YOUR RESTAURANT GUIDE\nSave your favorite restaurants with personalized safety scores. See which places are best for your diet at a glance.\n\nKEY FEATURES\n• AI-powered menu analysis\n• 25+ dietary restrictions\n• Offline access to saved scans\n• Restaurant rankings\n• Share-friendly results\n• Dark mode support\n\nDISCLAIMER\nMenuSafe is a helpful tool but should not replace communication with restaurant staff about your allergies. Always verify ingredients directly for severe allergies.",
+    "keywords": "food allergy,menu scanner,gluten free,dairy free,vegan,vegetarian,allergen,restaurant,diet,intolerance,celiac,lactose,nut allergy,shellfish,keto,halal,kosher",
+    "promotional_text": "Scan any menu. Know what's safe. Eat with confidence.",
+    "support_url": "https://menusafe.app/support",
+    "marketing_url": "https://menusafe.app",
+    "privacy_policy_url": "https://menusafe.app/privacy",
+    "whats_new": "Welcome to MenuSafe! This initial release includes:\n• AI-powered menu scanning\n• Support for 25+ dietary restrictions\n• Restaurant saving and ranking\n• Offline access to your scans"
+  },
+  "google_play_store": {
+    "category": "Food & Drink",
+    "content_rating": "Everyone",
+    "price": "Free with in-app subscription",
+    "subscription_price": "€2.90/month (Pro)",
+    "contains_ads": false,
+    "in_app_purchases": true,
+    "short_description": "AI menu scanner for food allergies. Scan any menu to find safe dishes for your diet.",
+    "full_description": "MenuSafe uses AI to instantly analyze restaurant menus and identify dishes safe for your dietary needs.\n\n<b>SIMPLY SCAN ANY MENU</b>\nTake a photo of any restaurant menu - printed, digital, or handwritten. Our advanced AI reads and analyzes every dish in seconds.\n\n<b>PERSONALIZED FOR YOUR DIET</b>\nSet up your dietary profile once with 25+ restrictions including:\n• Food allergies (nuts, shellfish, eggs, soy)\n• Intolerances (gluten, lactose, FODMAP)\n• Lifestyle diets (vegan, vegetarian, keto, halal, kosher)\n\n<b>INSTANT SAFETY RATINGS</b>\nEach dish gets a clear rating:\n✓ Safe - Enjoy without worry\n⚠ Caution - May contain traces\n✗ Avoid - Contains your restrictions\n\n<b>BUILD YOUR RESTAURANT GUIDE</b>\nSave your favorite restaurants with personalized safety scores. See which places are best for your diet at a glance.\n\n<b>KEY FEATURES</b>\n• AI-powered menu analysis\n• 25+ dietary restrictions\n• Offline access to saved scans\n• Restaurant rankings\n• Share-friendly results\n• Dark mode support\n\n<b>DISCLAIMER</b>\nMenuSafe is a helpful tool but should not replace communication with restaurant staff about your allergies. Always verify ingredients directly for severe allergies.",
+    "privacy_policy_url": "https://menusafe.app/privacy",
+    "developer_email": "support@menusafe.app",
+    "developer_website": "https://menusafe.app",
+    "developer_address": ""
+  },
+  "screenshots_required": {
+    "ios": {
+      "iphone_6_5": {
+        "size": "1284x2778",
+        "count": 5,
+        "descriptions": [
+          "Scan any menu instantly",
+          "See safety ratings for every dish",
+          "Set your dietary restrictions",
+          "Build your restaurant guide",
+          "Track your scan history"
+        ]
+      },
+      "iphone_5_5": {
+        "size": "1242x2208",
+        "count": 5
+      },
+      "ipad_pro_12_9": {
+        "size": "2048x2732",
+        "count": 5
+      }
+    },
+    "android": {
+      "phone": {
+        "size": "1080x1920",
+        "count": 5
+      },
+      "tablet_7": {
+        "size": "1200x1920",
+        "count": 5
+      },
+      "tablet_10": {
+        "size": "1920x1200",
+        "count": 5
+      }
+    }
+  },
+  "permissions_required": {
+    "ios": [
+      {
+        "key": "NSCameraUsageDescription",
+        "description": "MenuSafe needs camera access to scan restaurant menus and identify safe dishes for your dietary needs."
+      },
+      {
+        "key": "NSPhotoLibraryUsageDescription",
+        "description": "MenuSafe needs photo library access to let you select menu images from your photos."
+      }
+    ],
+    "android": [
+      {
+        "permission": "android.permission.CAMERA",
+        "description": "Required to scan restaurant menus"
+      },
+      {
+        "permission": "android.permission.READ_EXTERNAL_STORAGE",
+        "description": "Required to select menu images from gallery"
+      },
+      {
+        "permission": "android.permission.INTERNET",
+        "description": "Required to analyze menus using AI"
+      }
+    ]
+  },
+  "review_notes": {
+    "demo_account": {
+      "email": "reviewer@menusafe.app",
+      "password": "ReviewerDemo2026!"
+    },
+    "notes": "1. Create an account or use demo credentials\n2. Set dietary restrictions in Settings (e.g., select 'Gluten' and 'Dairy')\n3. Go to Scan and take a photo of any restaurant menu\n4. View the analysis showing safe/caution/avoid ratings\n5. Save restaurants to see rankings based on your diet"
+  }
+}
