@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { createClient } from '@/lib/supabase/client'
-import { LayoutDashboard, ScanLine, Settings, LogOut, Store, Shield } from 'lucide-react'
+import { LayoutDashboard, ScanLine, Settings, LogOut, Store, Shield, BarChart3, Heart, Lightbulb } from 'lucide-react'
 import { Logo } from '@/components/brand/logo'
 
 // Admin emails - must match the list in app/admin/page.tsx
@@ -15,6 +15,8 @@ const links = [
   { href: '/dashboard', label: 'Home', icon: LayoutDashboard },
   { href: '/dashboard/scan', label: 'Scan', icon: ScanLine },
   { href: '/dashboard/restaurants', label: 'Restaurants', icon: Store },
+  { href: '/dashboard/analytics', label: 'Analytics', icon: BarChart3 },
+  { href: '/dashboard/favorites', label: 'Favorites', icon: Heart },
   { href: '/dashboard/settings', label: 'Settings', icon: Settings },
 ]
 
