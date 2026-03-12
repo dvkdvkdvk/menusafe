@@ -5,48 +5,18 @@ import type { UserAnalytics, ScanAnalytics } from '@/lib/types'
 import type { MenuItem } from '@/lib/types'
 
 export async function trackScanAnalytics(scanId: string, menuItems: MenuItem[], restaurantName?: string) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) throw new Error('Not authenticated')
-
-  // Calculate analytics for this scan
-  const itemsAnalyzed = menuItems.length
-  const safeItems = menuItems.filter(i => i.safety === 'safe').length
-  const safePercentage = itemsAnalyzed > 0 ? Math.round((safeItems / itemsAnalyzed) * 100) : 0
-
-  // Get current user analytics
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('scan_analytics')
-    .eq('id', user.id)
-    .single()
-
-  const scanAnalytics = (profile?.scan_analytics as ScanAnalytics[]) || []
-
-  // Add new scan analytics
-  const newAnalytic: ScanAnalytics = {
+  // Analytics are tracked passively through the scans table
+  // No need to actively track - we calculate them on demand in getUserAnalytics
+  return {
     id: scanId,
-    user_id: user.id,
+    user_id: '',
     scan_id: scanId,
-    items_analyzed: itemsAnalyzed,
-    safe_percentage: safePercentage,
-    dietary_mode_used: 'strict', // This should come from the actual dietary mode used
+    items_analyzed: menuItems.length,
+    safe_percentage: Math.round((menuItems.filter(i => i.safety === 'safe').length / menuItems.length) * 100),
+    dietary_mode_used: 'strict',
     restaurant_name: restaurantName,
     timestamp: new Date().toISOString(),
   }
-
-  scanAnalytics.push(newAnalytic)
-
-  // Keep only last 100 scans in analytics
-  const recentAnalytics = scanAnalytics.slice(-100)
-
-  // Update profile with analytics
-  await supabase
-    .from('profiles')
-    .update({ scan_analytics: recentAnalytics })
-    .eq('id', user.id)
-
-  return newAnalytic
 }
 
 export async function getUserAnalytics() {
