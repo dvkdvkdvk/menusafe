@@ -1,9 +1,12 @@
 const CACHE_NAME = 'menusafe-v1';
+const RUNTIME_CACHE = 'menusafe-runtime-v1';
 const STATIC_ASSETS = [
   '/',
   '/dashboard',
   '/dashboard/scan',
   '/dashboard/restaurants',
+  '/dashboard/analytics',
+  '/dashboard/favorites',
   '/offline',
 ];
 
@@ -23,7 +26,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames
-          .filter((name) => name !== CACHE_NAME)
+          .filter((name) => name !== CACHE_NAME && name !== RUNTIME_CACHE)
           .map((name) => caches.delete(name))
       );
     })
@@ -47,7 +50,7 @@ self.addEventListener('fetch', (event) => {
       .then((response) => {
         // Clone the response before caching
         const responseClone = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
+        caches.open(RUNTIME_CACHE).then((cache) => {
           cache.put(event.request, responseClone);
         });
         return response;
@@ -91,13 +94,15 @@ self.addEventListener('push', (event) => {
     icon: '/icons/icon-192x192.png',
     badge: '/icons/badge-72x72.png',
     vibrate: [100, 50, 100],
+    tag: data.tag || 'menusafe-notification',
+    requireInteraction: !!data.requireInteraction,
     data: {
       url: data.url || '/dashboard',
     },
   };
 
   event.waitUntil(
-    self.registration.showNotification(data.title, options)
+    self.registration.showNotification(data.title || 'MenuSafe', options)
   );
 });
 
@@ -105,6 +110,15 @@ self.addEventListener('push', (event) => {
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
   event.waitUntil(
-    clients.openWindow(event.notification.data.url)
+    clients.matchAll({ type: 'window' }).then((clientList) => {
+      for (const client of clientList) {
+        if (client.url === event.notification.data.url && 'focus' in client) {
+          return client.focus();
+        }
+      }
+      if (clients.openWindow) {
+        return clients.openWindow(event.notification.data.url);
+      }
+    })
   );
 });

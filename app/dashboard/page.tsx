@@ -67,12 +67,19 @@ export default async function DashboardPage() {
               : `You have ${scans.length} recent scan${scans.length !== 1 ? 's' : ''}`}
           </p>
         </div>
-        <Button asChild className="group h-12 gap-2 rounded-full bg-primary px-6 text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-lg sm:h-11">
-          <Link href="/dashboard/scan">
-            <ScanLine className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
-            New Scan
-          </Link>
-        </Button>
+        <div className="flex gap-2">
+          <Button asChild variant="outline" className="gap-2 rounded-full">
+            <Link href="/dashboard/analytics">
+              Analytics
+            </Link>
+          </Button>
+          <Button asChild className="group h-12 gap-2 rounded-full bg-primary px-6 text-primary-foreground transition-all duration-300 hover:scale-105 hover:bg-primary/90 hover:shadow-lg sm:h-11">
+            <Link href="/dashboard/scan">
+              <ScanLine className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
+              New Scan
+            </Link>
+          </Button>
+        </div>
       </div>
 
       {/* Stats summary - compact inline */}
