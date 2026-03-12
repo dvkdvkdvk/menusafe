@@ -15,11 +15,3 @@ CREATE INDEX IF NOT EXISTS idx_favorites_user_id ON public.favorites(user_id);
 CREATE INDEX IF NOT EXISTS idx_favorites_restaurant_id ON public.favorites(restaurant_id);
 
 ALTER TABLE public.favorites ENABLE ROW LEVEL SECURITY;
-
-DROP POLICY IF EXISTS "favorites_select_own" ON public.favorites;
-DROP POLICY IF EXISTS "favorites_insert_own" ON public.favorites;
-DROP POLICY IF EXISTS "favorites_delete_own" ON public.favorites;
-
-CREATE POLICY "favorites_select_own" ON public.favorites FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "favorites_insert_own" ON public.favorites FOR INSERT WITH CHECK (auth.uid() = user_id);
-CREATE POLICY "favorites_delete_own" ON public.favorites FOR DELETE USING (auth.uid() = user_id);
