@@ -97,7 +97,8 @@ export function LandingHero() {
               src={image.src}
               alt={image.alt}
               fill
-              priority={index === 0}
+              priority
+              loading="eager"
               className="object-cover"
               sizes="100vw"
             />
