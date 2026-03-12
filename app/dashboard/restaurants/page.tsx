@@ -94,6 +94,16 @@ export default function RestaurantsPage() {
   const [loading, setLoading] = useState(true)
   const [deleteTarget, setDeleteTarget] = useState<RestaurantWithStats | null>(null)
   const [deleting, setDeleting] = useState(false)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [safetyFilter, setSafetyFilter] = useState<'all' | 'safe' | 'caution' | 'unsafe'>('all')
+
+  const filteredRestaurants = restaurants.filter(r => {
+    const matchesSearch = r.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                          (r.address?.toLowerCase().includes(searchTerm.toLowerCase()) ?? false)
+    const safetyLevel = getSafetyLevel(r.safetyScore)
+    const matchesSafety = safetyFilter === 'all' || safetyLevel === safetyFilter
+    return matchesSearch && matchesSafety
+  })
 
   const handleDelete = async (restaurant: RestaurantWithStats) => {
     setDeleting(true)
@@ -179,13 +189,36 @@ export default function RestaurantsPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 pb-8 pt-6 sm:px-6 sm:py-10">
       <div className="mb-6">
-<h1 className="font-serif text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            My Restaurants
+        <h1 className="font-serif text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          My Restaurants
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Ranked by safety from your scans
         </p>
       </div>
+
+      {/* Search and Filter */}
+      {restaurants.length > 0 && (
+        <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <input
+            type="text"
+            placeholder="Search restaurants..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="flex h-10 rounded-lg border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary flex-1"
+          />
+          <select
+            value={safetyFilter}
+            onChange={(e) => setSafetyFilter(e.target.value as any)}
+            className="flex h-10 rounded-lg border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+            <option value="all">All Safety Levels</option>
+            <option value="safe">Safe Only</option>
+            <option value="caution">Caution Only</option>
+            <option value="unsafe">Unsafe Only</option>
+          </select>
+        </div>
+      )}
 
       {restaurants.length === 0 ? (
         <Card>
@@ -203,11 +236,20 @@ export default function RestaurantsPage() {
             </Button>
           </CardContent>
         </Card>
+      ) : filteredRestaurants.length === 0 ? (
+        <Card>
+          <CardContent className="flex flex-col items-center justify-center py-12 text-center">
+            <Store className="h-12 w-12 text-muted-foreground/50" />
+            <h3 className="mt-4 text-lg font-medium text-foreground">No matching restaurants</h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Try adjusting your search or filters
+            </p>
+          </CardContent>
+        </Card>
       ) : (
         <div className="flex flex-col gap-3">
-          {restaurants.map((restaurant, index) => {
+          {filteredRestaurants.map((restaurant, index) => {
             const safetyLevel = getSafetyLevel(restaurant.safetyScore)
-            const isTopThree = index < 3
             
             return (
               <Link 
@@ -223,7 +265,7 @@ export default function RestaurantsPage() {
                       safetyLevel === 'caution' ? 'bg-caution/10 text-caution' :
                       'bg-unsafe/10 text-unsafe'
                     }`}>
-                      #{index + 1}
+                      #{restaurants.indexOf(restaurant) + 1}
                     </div>
 
                     {/* Restaurant Info */}
