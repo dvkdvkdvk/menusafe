@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { getUserAnalytics } from '@/app/actions/analytics'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
+import { SafetyPieChart, SafetyBarChart } from '@/components/analytics-charts'
 import { CheckCircle, AlertTriangle, XCircle, TrendingUp } from 'lucide-react'
 import type { MenuItem } from '@/lib/types'
 
@@ -109,31 +109,7 @@ export default async function AnalyticsDashboard() {
             <CardTitle>Safety Distribution</CardTitle>
           </CardHeader>
           <CardContent>
-            {totalItems > 0 ? (
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                  <Pie
-                    data={safetyData}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={(entry) => `${entry.name} ${Math.round((entry.value / totalItems) * 100)}%`}
-                    outerRadius={80}
-                    fill="#8884d8"
-                    dataKey="value"
-                  >
-                    {safetyData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-            ) : (
-              <div className="flex h-64 items-center justify-center text-muted-foreground">
-                No data yet
-              </div>
-            )}
+            <SafetyPieChart data={safetyData} totalItems={totalItems} />
           </CardContent>
         </Card>
 
@@ -143,24 +119,7 @@ export default async function AnalyticsDashboard() {
             <CardTitle>Items by Safety Level Over Time</CardTitle>
           </CardHeader>
           <CardContent>
-            {chartData.length > 0 ? (
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={chartData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="week" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="safe" stackId="a" fill="#10b981" name="Safe" />
-                  <Bar dataKey="caution" stackId="a" fill="#f59e0b" name="Caution" />
-                  <Bar dataKey="unsafe" stackId="a" fill="#ef4444" name="Unsafe" />
-                </BarChart>
-              </ResponsiveContainer>
-            ) : (
-              <div className="flex h-64 items-center justify-center text-muted-foreground">
-                No data yet
-              </div>
-            )}
+            <SafetyBarChart data={chartData} />
           </CardContent>
         </Card>
       </div>
